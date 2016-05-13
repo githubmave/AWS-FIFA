@@ -1,0 +1,49 @@
+
+<section class="row-fluid">  
+	   <form class="row-fluid">
+		    <label>Fan Name</label> 
+		    
+		        <input   type="text" name="name" ng-model="newcontact.name"/>
+		        
+		            
+		        
+		    <label>My email</label>
+		     
+		    
+		        <input type="text" name="email" ng-model="newcontact.email"/>
+		    
+		    <label>My Team</label> 
+		    
+		        <input type="text" name="phone" ng-model="newcontact.phone"/>
+		    
+		        <br/>
+		        <input type="hidden" ng-model="newcontact.id" /> 
+		        
+		        
+		     <input type="button" value="Submit Msg"   class="btn btn-danger"              ng-click="saveContact()" />|
+		     <input type="button" value="Delete Msg"   class="btn btn-primary"              ng-click="deleteContact()" />
+
+	  
+	    </form>
+		<table  class="table table-striped table-bordered">
+			<thead>
+				<tr>
+				    <td class="tdCenter">Fan Name</th>
+				    <td class="tdCenter">My email</th>
+				    <td class="tdCenter">My Team</th>
+
+				</tr>
+			</thead>
+			<tbody>
+			
+				<tr    ng-repeat="contact in contacts">
+				    <td class="tdRight">{{ contact.name }} {{contact.id}}</td>
+	    
+				    <td class="tdRight">{{ contact.email }}</td>
+				    <td class="tdRight">{{ contact.phone }}</td>
+
+				 
+			</tbody>
+		</table>
+</section>
+		

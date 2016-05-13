@@ -1,0 +1,47 @@
+
+<section>  
+ <form class="span8">
+    <ul class="artistlist">   
+         <li class="artistlist cf">
+
+	
+	         <!--     <li   ng-repeat="food in foodList"> -->
+		         <a href="#/foodListView/{{preItem}}"               class="btn btn-danger">&laquo; Prev</a>
+		         <a href="#/foodListView/{{nextItem}}" class="btn btn-danger">Next &raquo;</a>	
+		         
+		</li>
+		<li class="artistlist cf">
+	          <img ng-src="img/png 128/{{foodList[routeId].shortname}}.png"> 
+          </li>  
+          
+   </ul>       
+            <ul>
+            	<li >
+              	 {{foodList[routeId].shortname}} |  {{foodList[routeId].price|currency}}<span><select ng-model='selectedQuty', ng-options='obj.quty for obj in qutyList'></select></span>
+              	</li>
+              	
+              	
+            </ul>
+            
+            <ul>
+            	<li>        	    
+              		{{foodList[routeId].bio}}
+              		
+                </li>
+            </ul>
+            <ul>
+            	
+                   <input type="button" value="Add to Cart"   class="btn btn-primary"   ng-click='addToCart()' />
+                   
+                   <li ng-repeat='item in cartItemList'>{{item.name}}|{{item.quty}}</li>
+
+            	
+            </ul>
+            
+           
+         
+	            	<a href="index.html"><button class="btn btn-danger">&lt; Back to Home</button></a>
+  
+ </form> 
+ 
+</section>

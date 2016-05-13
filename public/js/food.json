@@ -1,0 +1,114 @@
+{"foodobj":
+
+[{"NAME":"Barot", "SHORTNAME":"netherlands",
+   "PRICE":15,
+    
+    "matchs":[{"GAME":"Netherland vs  England"},
+            {"GAME":"Netherland vs     Germany"},
+            {"GAME":"Netherland,        Chile"},
+            {"GAME":"Netherland,       Bosilia"}    
+    
+    ],
+
+    "ACTIVE":false,
+    "BIO":"Barot has just finished his sts of his generation "
+  },
+  
+  {
+    "NAME":"Jonathan G. Ferrar II",
+    "SHORTNAME":"germany",
+    "PRICE":35,
+    
+    "matchs":[{"GAME":"Germany vs  Brazil"},
+           {"GAME":"Germany vs England"},
+           {"GAME":"Germany,    Chile"},
+          {"GAME":"Germany,    Bosilia"}    
+    
+    ],
+    
+        "ACTIVE":false,
+
+    "BIO":"The Artist to Watch in 2012 by the London Review"
+  
+  },
+  {
+    "NAME":"Hillary Hewitt Goldwynn-Post",
+    "SHORTNAME":"brasil",
+    "PRICE":16,
+    "matchs":[{"GAME":"Brazil vs  Germany"},
+           {"GAME":"Brazil vs England"},
+           {"GAME":"Brazil,Chile"},
+           {"GAME":"Brazil,Bosilia"}
+           ],    
+           
+            "ACTIVE":false,
+
+    "BIO":"Hillary is a sophomore art sculpture student at New York University, and has already won all the major international prizes for new sculptors, including the Divinity Circle, the International Sculptor's Medal, and the Academy of Paris Award. Hillary's CAC exhibit features 25 abstract watercolor paintings that contain only water images including waves, deep sea, and river."
+
+  
+  },
+  {
+    "NAME":"Hassum Harrod",
+    "SHORTNAME":"poland",
+    "PRICE":56,
+    
+        "matchs":[{"GAME":"england vs  Brazil"},
+           {"GAME":"England vs England"},
+           {"GAME":"England,Chile"},
+           {"GAME":"England,Bosilia"}
+           ],    
+
+    
+            "ACTIVE":false,
+
+    "BIO":"The Art College in New Dehli has sponsored Hassum on scholarship for his entire undergraduate career at the university, seeing great promise in his contemporary paintings of landscapes - that use equal parts muted and vibrant tones, and are almost a contradiction in art. Hassum will be speaking on \"The use and absence of color in modern art\" during Thursday's agenda."
+
+
+  },
+  {
+    "NAME":"Jennifer Jerome",
+    "SHORTNAME":"chile",
+    "PRICE":36,
+    
+        "matchs":[{"GAME":"Chilly vs  Brazil"},
+            {"GAME":"Chile vs England"},
+            {"GAME":"Chile,Chile"},
+            {"GAME":"Chile,Bosilia"}
+           ],    
+
+    
+            "ACTIVE":false,
+
+    "BIO":"A native of New Orleans, much of Jennifer's work has centered around abstract images that depict flooding and rebuilding, having grown up as a teenager in the post-flood years. Despite the sadness of devastation and lives lost, Jennifer's work also depicts the hope and togetherness of a community that has persevered. Jennifer's exhibit will be discussed during Tuesday's Water in Art theme."
+
+
+  },
+  {
+    "NAME":"LaVonne L. LaRue",
+    "SHORTNAME":"italy",
+    "PRICE":69,
+        "matchs":[{"GAME":"Italy vs  Brazil"},
+            {"GAME":"Italy vs England"},
+           {"GAME":"Italy,Chile"},
+           {"GAME":"Italy,Bosilia"}
+           ],    
+
+            "ACTIVE":false,
+
+    "BIO":"LaVonne's giant-sized paintings all around Chicago tell the story of love, nature, and conservation - themes that are central to her heart. LaVonne will share her love and skill of graffiti art on Monday's schedule, as she starts the painting of a 20-foot high wall in the Rousseau Room of Hotel Contempo in front of a standing-room only audience in Art in Unexpected Places."
+
+
+  }
+ 
+  
+ 
+ 	]}
+ 	
+ 
+ 	
+ 
+ 
+  
+ 
+ 	
+ 	
