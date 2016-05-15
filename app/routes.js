@@ -1,32 +1,32 @@
 var Todo = require('./models/todo');
 
-var aws=require('aws-sdk');
+// var aws=require('aws-sdk');
 
-aws.config.update({accessKeyId: 'AKIAIUQ5OWX24OGOLQ5A', secretAccessKey: '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'}); 
-
-
-aws.config.update({region: 'us-east-1'}); 
+// aws.config.update({accessKeyId: 'AKIAIUQ5OWX24OGOLQ5A', secretAccessKey: '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'}); 
 
 
-var db = new aws.DynamoDB(); 
+// aws.config.update({region: 'us-east-1'}); 
 
-var dbClient = new aws.DynamoDB.DocumentClient();
 
-dbClient.scan({ 
-        TableName : "Ticket_Tb", 
-        Limit : 50 
-        }, function(err, data) { 
-        if (err) { console.log(err); 
-        return; } 
-        console.log(data.Items); 
-        for (var ii in data.Items) { 
-        ii = data.Items[ii]; 
-        console.log(ii.ID); 
-        console.log(ii.TITLE); 
+// var db = new aws.DynamoDB(); 
+
+// var dbClient = new aws.DynamoDB.DocumentClient();
+
+// dbClient.scan({ 
+        // TableName : "Ticket_Tb", 
+        // Limit : 50 
+        // }, function(err, data) { 
+        // if (err) { console.log(err); 
+        // return; } 
+        // console.log(data.Items); 
+        // for (var ii in data.Items) { 
+        // ii = data.Items[ii]; 
+        // console.log(ii.ID); 
+        // console.log(ii.TITLE); 
         
-        } 
-        }
-        ); 
+        // } 
+        // }
+        // ); 
 
 
 
