@@ -71,18 +71,7 @@ module.service('ContactService', function () {
         return contacts;
     };
     
-    
-   
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
 });
  
  
@@ -138,4 +127,8 @@ module.service('CartItemService', function () {
   
 
 });
+
+
+
+
 

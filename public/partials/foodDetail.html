@@ -46,13 +46,17 @@
             </ul>
             <ul>
             	
-                   <input type="button" value="Add to Cart"   class="btn btn-primary"   ng-click='addToCart()' />
+                   <input type="button" value="Add to Cart"   class="btn btn-primary"   ng-click='addToMyCart()' />
                    
                    <li ng-repeat='item in cartItemList'>{{item.NAME}}   x   {{item.QUTY}} </li>
 
+                   <p class="text-center" ng-show="loading">
+                        <span class="fa fa-spinner fa-spin fa-3x"></span>
+                    </p>
+
             	
             </ul>
-            <ul><li>Total:{{countTotal()|currency}}</li></ul>
+            <ul><li>   Total:{{countTotal()|currency}}</li></ul>
             
            
          

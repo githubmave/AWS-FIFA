@@ -6,7 +6,7 @@
  
   var mainController=angular.module('myApp.controllers',[]);
  
-   mainController.controller('MyFoodListCtrl',function($scope,$http,$routeParams,CartItemService){
+   mainController.controller('MyFoodListCtrl',function($scope,$http,$routeParams,CartItemService,CartItemFac){
  	//*****GET DATA
  	 $http.get('js/food.json').success(function(data){
  	 	
@@ -25,20 +25,29 @@
  	$scope.routeId=$routeParams.itemId;
  	
  	$scope.selectedQuty=1;
+
+  $scope.loading = true;
  	
- 	$scope.cartItemList=CartItemService.list();
+ 	// $scope.cartItemList=CartItemService.list();
+
+  // $scope.cartItemList=CartItemFac.get();
+
+
+  CartItemFac.get()
+      .success(function(data) {
+        // $scope.todos = data;
+        $scope.cartItemList = data;
+
+
+        $scope.loading = false;
+ });
+
+  
+
  	
  	$scope.newCartItem={};
  	
-   // $scope.totalPrice=0;
- 	
- 	//******local storage
-
-  // $scope.$storage=$localStorage.$default({
-
-
-    
-  // });
+ 
  	
  	$scope.addToCart=function(){
 
@@ -50,6 +59,28 @@
  	
  		CartItemService.addToCart($scope.newCartItem);
  		
+ };
+
+
+  $scope.addToMyCart=function(){
+
+  //  var newCartItem={"name":"Japan","price":"15","Quty":"2",};
+    
+    $scope.newCartItem.NAME=$scope.foodList2[$scope.routeId].SHORTNAME;
+    $scope.newCartItem.PRICE=$scope.foodList2[$scope.routeId].PRICE;
+  //  $scope.newCartItem.QUTY=$scope.selectedQuty;
+  
+    CartItemFac.create($scope.newCartItem)
+
+    .success(function(data) {
+            $scope.loading = false;
+            // $scope.formData = {};
+            // $scope.todos = data; 
+            $scope.newCartItem={};
+            $scope.cartItemList = data;
+
+          });
+    
  };
  	
  // ********COUNT TOTAL PRICE
@@ -64,7 +95,8 @@
  		
  		    
  		totalPrice+=Number(item.PRICE)*Number(item.QUTY);
- 		
+ 		// totalPrice+=item.PRICE*item.QUTY;
+
  		
  		
  	});
@@ -197,3 +229,19 @@ mainController.controller('cartItemController', function($scope,$http,CartItemSe
         $scope.newcontact = angular.copy(ContactService.get(id));
     };
 });
+
+
+
+mainController.factory('CartItemFac', ['$http',function($http) {
+        return {
+            get : function() {
+                return $http.get('/api/cartItemsLs');
+            },
+            create : function(cartItemsData) {
+                return $http.post('/api/cartItemsLs', cartItemsData);
+            },
+            delete : function(id) {
+                return $http.delete('/api/cartItemsLs/' + id);
+            }
+        }
+}]);

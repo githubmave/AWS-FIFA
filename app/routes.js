@@ -1,32 +1,32 @@
 var Todo = require('./models/todo');
 
-// var aws=require('aws-sdk');
+var aws=require('aws-sdk');
 
-// aws.config.update({accessKeyId: 'AKIAIUQ5OWX24OGOLQ5A', secretAccessKey: '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'}); 
-
-
-// aws.config.update({region: 'us-east-1'}); 
+aws.config.update({accessKeyId: 'AKIAIUQ5OWX24OGOLQ5A', secretAccessKey: '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'}); 
 
 
-// var db = new aws.DynamoDB(); 
+aws.config.update({region: 'us-east-1'}); 
 
-// var dbClient = new aws.DynamoDB.DocumentClient();
 
-// dbClient.scan({ 
-        // TableName : "Ticket_Tb", 
-        // Limit : 50 
-        // }, function(err, data) { 
-        // if (err) { console.log(err); 
-        // return; } 
-        // console.log(data.Items); 
-        // for (var ii in data.Items) { 
-        // ii = data.Items[ii]; 
-        // console.log(ii.ID); 
-        // console.log(ii.TITLE); 
+var db = new aws.DynamoDB(); 
+
+var dbClient = new aws.DynamoDB.DocumentClient();
+
+dbClient.scan({ 
+        TableName : "CartItems_Tb", 
+        Limit : 50 
+        }, function(err, data) { 
+        if (err) { console.log(err); 
+        return; } 
+        console.log(data.Items); 
+        for (var ii in data.Items) { 
+        ii = data.Items[ii]; 
+        console.log(ii.NAME); 
+        console.log(ii.PRICE); 
         
-        // } 
-        // }
-        // ); 
+        } 
+        }
+        ); 
 
 
 
@@ -43,31 +43,76 @@ function getTodos(res) {
 }
 ;
 
+function getCartItmes(res) {
+
+     dbClient.scan({ 
+            TableName : "CartItems_Tb", 
+            Limit : 50 
+            }, function(err, data) { 
+                if (err) { console.log(err); 
+                return; } 
+
+
+                res.json(data.Items);
+                
+            }
+        ); 
+    
+}
+;
+
 module.exports = function (app) {
 
     // api ---------------------------------------------------------------------
-    // get all todos
-    app.get('/api/todos', function (req, res) {
+    
+    //------------------------
+
+
+    app.get('/api/cartItemsLs', function (req, res) {
         // use mongoose to get all todos in the database
-        getTodos(res);
+        // getTodos(res);
+
+       getCartItmes(res);
+
+
     });
+
+
+
+
 
     // create todo and send back all todos after creation
-    app.post('/api/todos', function (req, res) {
+    app.post('/api/cartItemsLs', function (req, res) {
 
-        // create a todo, information comes from AJAX request from Angular
-        Todo.create({
-            text: req.body.text,
-            done: false
-        }, function (err, todo) {
-            if (err)
-                res.send(err);
+       //------------------------------
 
-            // get and return all the todos after you create another
-            getTodos(res);
-        });
+       dbClient.put({
 
-    });
+                TableName:"CartItems_Tb",
+                Item:{
+                "NAME": req.body.NAME,
+                "PRICE": req.body.PRICE,
+                "QUTY": req.body.QUTY
+
+               
+                      }
+           
+
+
+               }, function(err, data) {
+                    if (err) {
+                            console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+                        } else {
+                            console.log("Added item:", JSON.stringify(data, null, 2));
+                        }
+            
+
+                      getCartItmes(res);
+                      
+               });
+      });
+
+
 
     // delete a todo
     app.delete('/api/todos/:todo_id', function (req, res) {
