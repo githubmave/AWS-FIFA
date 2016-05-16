@@ -32,22 +32,6 @@ dbClient.scan({
 
 
 
-
-
-
-function getTodos(res) {
-    Todo.find(function (err, todos) {
-
-        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-        if (err) {
-            res.send(err);
-        }
-
-        res.json(todos); // return all todos in JSON format
-    });
-}
-;
-
 function getCartItmes(res) {
 
      dbClient.scan({ 
@@ -119,17 +103,40 @@ module.exports = function (app) {
 
 
 
-    // delete a todo
-    app.delete('/api/todos/:todo_id', function (req, res) {
-        Todo.remove({
-            _id: req.params.todo_id
-        }, function (err, todo) {
-            if (err)
-                res.send(err);
+    // delete a cartItem
 
-            getTodos(res);
-        });
+    app.delete('/api/cartItemsLs/:item_id', function (req, res){
+
+             dbClient.delete({
+
+                 _id: req.params.item_id,
+                TableName:"CartItems_Tb",
+                Key:{
+                  "NAME": req.params.item_id
+                // "PRICE": req.body.PRICE,
+                // "QUTY": req.body.QUTY
+
+               
+                    }
+           
+
+
+               }, function(err, data) {
+                    if (err) {
+                            console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+                        } else {
+                            console.log("Added item:", JSON.stringify(data, null, 2));
+                        }
+            
+
+                      getCartItmes(res);
+                      
+               });
+
+           
     });
+
+
 
     // application -------------------------------------------------------------
     app.get('*', function (req, res) {

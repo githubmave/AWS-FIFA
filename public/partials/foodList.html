@@ -7,18 +7,20 @@
 	
              
  		</ul>
+
  		 	
     <ul>
    	
      <li>
-	     Total:    <span>{{total()|currency}}</span>	
+	     Total:    <span>{{total()|currency}}</span>
+	      
    	 </li>
    	 
    	
    </ul>
  		
  	</div>
- 	
+ 	(click the bar to see the change in "Total") 	
     <ul>   
     	
 	   	<li  ng-repeat="food in foodList2" >
@@ -32,7 +34,7 @@
 				        <li  class="artistinfo"   ng-click='toggleActive(food)' ng-class='{active:food.ACTIVE}'>
 				              	 {{food.SHORTNAME}} <span>{{food.PRICE|currency}} </span>
 				        </li>
-				        
+				       
                        
 		                
 		                

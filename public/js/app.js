@@ -34,7 +34,6 @@ angular.module('myApp', [
 
   	$routeProvider.when('/wantSay',{templateUrl:'partials/wantSay.html',controller:'ContactController'});
 
-    $routeProvider.when('/Save Trips',{templateUrl:'partials/saveTrips.html',controller:'storageCtrl'});
 
     $routeProvider.otherwise({redirectTo:'/foodListView'});	
  

@@ -27,6 +27,8 @@
  	$scope.selectedQuty={};
   $scope.selectedTeam={};
 
+  $scope.cartItemList=[];
+
   $scope.loading = true;
  	
  	// $scope.cartItemList=CartItemService.list();
@@ -72,6 +74,21 @@
                   });
     // };
  };
+
+ // delect items
+
+ $scope.deleteCartItem=function(id){
+
+    CartItemFac.delete(id)
+     .success(function(data) {
+          $scope.loading = false;
+
+
+          $scope.cartItemList = data; 
+
+
+      });
+  };
  	
  // ********COUNT TOTAL PRICE
  
