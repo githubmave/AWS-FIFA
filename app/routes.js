@@ -23,10 +23,15 @@ dbClient.scan({
         ii = data.Items[ii]; 
         console.log(ii.NAME); 
         console.log(ii.PRICE); 
+        console.log(ii.QUTY)
         
         } 
         }
         ); 
+
+
+
+
 
 
 

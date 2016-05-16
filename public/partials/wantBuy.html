@@ -10,33 +10,48 @@
  	
  	<div>
 	    <ul>   
-	    			                <select  ng-model='selectedTeam'        ng-options='food.SHORTNAME for food in foodList2'></select>
+	    			                <select  ng-model='selectedTeam'        ng-options='food.SHORTNAME for food in foodList2' ></select>
+
+	    			                 <!-- <select  ng-model='newCartItem'       ng-options='food.SHORTNAME for food in foodList2'></select> -->
 	    			                
-	    			                <ul ng-repeat='item in selectedTeam.matchs'>
+	    			                <ul  ng-repeat='item in selectedTeam.matchs'>
 	    			                	
 	    			                	
 		    			                <li>{{item.GAME}}</li>
 		    			                
 	    			                </ul>
+
+	    			                 <!-- <ul ng-repeat='item in newCartItem.matchs'> -->
+	    			                	
+	    			                	
+		    			                <!-- <li>{{item.GAME}}</li> -->
+		    			                
+	    			                <!-- </ul> -->
 	    			                
 	    			                
 	    			                
 	    			                
-	    			                <select  ng-model='testItem'        ng-options='item.GAME for item in selectedTeam.matchs'></select>
+	    			           <!-- <select   ng-model='newItem' ng-options='item.GAME for item in selectedTeam.matchs'></select> -->
 	    			                					                	
-	    			           
-					                 <select  ng-model='newItem.itemQuty'>       
+	    			           <span><select ng-model='selectedQuty', ng-options='obj.QUTY for obj in qutyList2'></select></span>
+					                    
+					                    <!-- <select  ng-model='selectedQuty'>        -->
 					                	
-					                	<option ng-repeat='obj in qutyList2'>{{obj.QUTY}}</option>
+					                	   <!-- <option ng-repeat='obj in qutyList2'>{{obj.QUTY}}</option> -->
 			
 			
-			                        </select>
+			                             <!-- </select> -->
 			                        
-			                       <input type="hidden" ng-model="newItem.id" /> 
-			                       <label >Price:  {{selectedTeam.price|currency}}</label>
+			                       <!-- <input type="hidden" ng-model="newItem.id" />  -->
+			                       <!-- <label >Price:  {{selectedTeam.price|currency}}</label> -->
+
+			                       <!-- <input type="hidden" ng-model="newItem.id" />  -->
+			                       <!-- <input type="hidden" ng-model="newItem.id" />  -->
+
+			                       <label >Price:  {{selectedTeam.PRICE|currency}}</label>
 
 					                
-				                   <input type="button" value="Add "   class="btn btn-danger"   ng-click='addToCart()' />
+				                   <input type="button" value="Add to Cart"   class="btn btn-danger"   ng-click='addToMyCart()' /> (click the button again if nothing come out)
 				                   <input type="button" value="Delete "   class="btn btn-primary"   ng-click='deleteOrder()'/>
 
 
@@ -47,47 +62,20 @@
 	   </ul> 
 	   
 	   
-	   	<table  class="table table-striped table-bordered">
-			<thead>
-				<tr>
-				    <td class="tdCenter">Match</th>
-				    <td class="tdCenter">Tickets</th>
-					<td class="tdCenter">Total</th>
-   	
-				</tr>
-			</thead>
-			<tbody>
-			
-			       
-				    <td class="tdRight">{{ newItem.itemName}}              </td>
-				    <td class="tdRight">{{ newItem.itemQuty }}</td>
-			         <td class="tdRight">{{selectedTeam.PRICE*newItem.itemQuty}}</td>  
 
-			</tbody>
-			
-			<thead>
-				<tr>
-				    <td class="tdCenter">ID</th>
-				    <td class="tdCenter">Item</th>
-					<td class="tdCenter">Total Price  {{cartItemList[0].NAME}}</th>
-   	
-				</tr>
-			</thead>
-			
-			<tbody ng-repeat='item in cartItems'>
-			
-			       
-				    <td class="tdRight">{{item.id}}</td>
-				    <td class="tdRight">{{item.itemName}}</td>
-                    <td class="tdRight">{{totalPrice}}</td>
 
-			</tbody>
+		<ul>
+
+		    <li ng-repeat='item in cartItemList'>
+		        {{item.NAME}}: {{item.PRICE|currency}}   x   {{item.QUTY}} </li>
 			
-			
-			
-		</table>  
+		    <li>Total:{{countTotal()|currency}} {{testTotal}}</li>
+
+		</ul>
 	   
-  </div>     
+  </div>   
+
+
    
  </form> 
  

@@ -24,7 +24,8 @@
  	
  	$scope.routeId=$routeParams.itemId;
  	
- 	$scope.selectedQuty=1;
+ 	$scope.selectedQuty={};
+  $scope.selectedTeam={};
 
   $scope.loading = true;
  	
@@ -48,39 +49,28 @@
  	$scope.newCartItem={};
  	
  
- 	
- 	$scope.addToCart=function(){
-
- 	//	var newCartItem={"name":"Japan","price":"15","Quty":"2",};
- 		
- 		$scope.newCartItem.NAME=$scope.foodList2[$scope.routeId].SHORTNAME;
- 		$scope.newCartItem.PRICE=$scope.foodList2[$scope.routeId].PRICE;
- 	//	$scope.newCartItem.QUTY=$scope.selectedQuty;
- 	
- 		CartItemService.addToCart($scope.newCartItem);
- 		
- };
 
 
   $scope.addToMyCart=function(){
 
-  //  var newCartItem={"name":"Japan","price":"15","Quty":"2",};
-    
-    $scope.newCartItem.NAME=$scope.foodList2[$scope.routeId].SHORTNAME;
-    $scope.newCartItem.PRICE=$scope.foodList2[$scope.routeId].PRICE;
-  //  $scope.newCartItem.QUTY=$scope.selectedQuty;
+
+    $scope.newCartItem.PRICE=$scope.selectedTeam.PRICE;
+    $scope.newCartItem.NAME=$scope.selectedTeam.SHORTNAME;
+    $scope.newCartItem.QUTY=$scope.selectedQuty.QUTY;
+
+      
+    // if($scope.newCartItem.NAME!=undefined && $scope.newCartItem.QUTY!=undefined){
   
-    CartItemFac.create($scope.newCartItem)
+            CartItemFac.create($scope.newCartItem)
 
-    .success(function(data) {
-            $scope.loading = false;
-            // $scope.formData = {};
-            // $scope.todos = data; 
-            $scope.newCartItem={};
-            $scope.cartItemList = data;
+            .success(function(data) {
+                    $scope.loading = false;
+                    
+                    $scope.newCartItem={};
+                    $scope.cartItemList = data;
 
-          });
-    
+                  });
+    // };
  };
  	
  // ********COUNT TOTAL PRICE
@@ -88,16 +78,19 @@
  $scope.countTotal=function(){
  	
  	var totalPrice=0;
+
  	
  	//var quty=0;
  	angular.forEach($scope.cartItemList,function(item){
  		
- 		
- 		    
- 		totalPrice+=Number(item.PRICE)*Number(item.QUTY);
+ 		if($scope.cartItemList!=undefined){
+ 		     
+     		// totalPrice+=Number(item.PRICE)*Number(item.QUTY);
+        totalPrice+=Number(item.PRICE)*Number(item.QUTY);
+
  		// totalPrice+=item.PRICE*item.QUTY;
 
- 		
+ 		};
  		
  	});
  	
@@ -148,60 +141,10 @@
 		return total;
 	};
 	
-	//********************Add to cart
-	
 	
 
  });
  
- 
-
-
-//    mainController.controller('MyFoodListCtrl',['$scope','$routeParams',function($scope,$routeParams){
-
-mainController.controller('cartItemController', function($scope,$http,CartItemService){
-
-
-  $scope.selectedTeam={};
-  //*DATA******************
- 
-  
-   $http.get('js/food.json').success(function(data){
- 	 	
- 	 	$scope.foodList2=data.foodobj;
-  	
- 	 });
- 	
- 	
- $http.get('js/quantity.json').success(function(data){
- 	 	
- 	 	$scope.qutyList2=data.quantity;
-  	
- 	 });
-
-  //**************add to Cart function 
-    $scope.cartItems = CartItemService.list();
-    
-    $scope.addToCart = function () {
-        CartItemService.addToCart($scope.newItem);
-        $scope.newItem = {};
-    };
-  
-  
-  
-   
-   $scope.deleteOrder=function(){
-  
-  	$scope.cartItems.splice(0,1);
-  
-  };
-  
-  
-});
-
-
- 
-
 
 //************************************************************
 //********************************************************************************************

@@ -28,7 +28,10 @@ angular.module('myApp', [
  config(['$routeProvider',function($routeProvider){
  	$routeProvider.when('/foodListView',{templateUrl:'partials/foodList.html',controller:'MyFoodListCtrl'});
  	$routeProvider.when('/foodListView/:itemId',{templateUrl:'partials/foodDetail.html',controller:'MyFoodListCtrl'});
-  	$routeProvider.when('/wantBuy',{templateUrl:'partials/wantBuy.html',controller:'cartItemController'});
+  	// $routeProvider.when('/wantBuy',{templateUrl:'partials/wantBuy.html',controller:'cartItemController'});
+  
+  	$routeProvider.when('/wantBuy',{templateUrl:'partials/wantBuy.html',controller:'MyFoodListCtrl'});
+
   	$routeProvider.when('/wantSay',{templateUrl:'partials/wantSay.html',controller:'ContactController'});
 
     $routeProvider.when('/Save Trips',{templateUrl:'partials/saveTrips.html',controller:'storageCtrl'});

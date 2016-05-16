@@ -25,12 +25,12 @@
               	 <span><select ng-model='selectedQuty', ng-options='obj.QUTY for obj in qutyList2'></select></span>-->
               	 
               	 
-              	    <span><select  ng-model='newCartItem.QUTY'>       
+              	    <!-- <span><select  ng-model='newCartItem.QUTY'>        -->
 					                	
-					                	<option ng-repeat='obj in qutyList2'>{{obj.QUTY}}</option></span>
+					                	<!-- <option ng-repeat='obj in qutyList2'>{{obj.QUTY}}</option></span> -->
 			
 			
-			        </select>
+			              <!-- </select> -->
 	      	 
               	</li>
               	
@@ -42,21 +42,23 @@
               		{{foodList2[routeId].BIO}}
               		
                 </li>
+
+               
                 
             </ul>
-            <ul>
+            <!-- <ul> -->
             	
-                   <input type="button" value="Add to Cart"   class="btn btn-primary"   ng-click='addToMyCart()' />
+                   <!-- <input type="button" value="Add to Cart"   class="btn btn-primary"   ng-click='addToMyCart()' /> -->
                    
-                   <li ng-repeat='item in cartItemList'>{{item.NAME}}   x   {{item.QUTY}} </li>
+                   <!-- <li ng-repeat='item in cartItemList'>{{item.NAME}}   x   {{item.QUTY}} </li> -->
 
-                   <p class="text-center" ng-show="loading">
-                        <span class="fa fa-spinner fa-spin fa-3x"></span>
-                    </p>
+                   <!-- <p class="text-center" ng-show="loading"> -->
+                        <!-- <span class="fa fa-spinner fa-spin fa-3x"></span> -->
+                    <!-- </p> -->
 
             	
-            </ul>
-            <ul><li>   Total:{{countTotal()|currency}}</li></ul>
+            <!-- </ul> -->
+            <!-- <ul><li>   Total:{{countTotal()|currency}}</li></ul> -->
             
            
          
