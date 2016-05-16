@@ -12,7 +12,7 @@
 	    <ul>   
 	    			                <select  ng-model='selectedTeam'        ng-options='food.SHORTNAME for food in foodList2' ></select>
 
-	    			                 <!-- <select  ng-model='newCartItem'       ng-options='food.SHORTNAME for food in foodList2'></select> -->
+	    			                
 	    			                
 	    			                <ul  ng-repeat='item in selectedTeam.matchs'>
 	    			                	
@@ -21,17 +21,7 @@
 		    			                
 	    			                </ul>
 
-	    			                 <!-- <ul ng-repeat='item in newCartItem.matchs'> -->
-	    			                	
-	    			                	
-		    			                <!-- <li>{{item.GAME}}</li> -->
-		    			                
-	    			                <!-- </ul> -->
 	    			                
-	    			                
-	    			                
-	    			                
-	    			           <!-- <select   ng-model='newItem' ng-options='item.GAME for item in selectedTeam.matchs'></select> -->
 	    			                					                	
 	    			           <span><select ng-model='selectedQuty', ng-options='obj.QUTY for obj in qutyList2'></select></span>
 					                    
@@ -40,8 +30,8 @@
 			                       <label >Price:  {{selectedTeam.PRICE|currency}}</label>
 
 					                
-				                   <input type="button" value="Add to Cart"   class="btn btn-danger"   ng-click='addToMyCart()' /> (click the button again if nothing come out)
-				                   <!-- <input type="button" value="Delete "   class="btn btn-primary"   ng-click='deleteOrder()'/> -->
+				                   <input type="button" value="Add to Cart"   class="btn btn-danger"   ng-click='addToMyCart()' /> (Nothing??  click the button again )
+				                   
 	        
 	   </ul> 
 	   
@@ -50,9 +40,9 @@
 
 		<ul>
 
-		    <li  class="checkbox" ng-repeat='item in cartItemList'>
+		    <li  ng-repeat='item in cartItemList'>
 
-						<input type="checkbox" ng-click="deleteCartItem(item._id)"> 
+						<!-- <input type="checkbox" ng-click="deleteCartItem(item._id)">  -->
 		        {{item.NAME}}: {{item.PRICE|currency}}   x   {{item.QUTY}} 
 
 		        
@@ -61,6 +51,9 @@
 		    <li>Total:{{countTotal()|currency}} {{testTotal}}</li>
 
 		</ul>
+
+		       <a href="index.html"><input type="button" value="Back" class="btn btn-primary"></a>   
+
 	   
   </div>   
 
